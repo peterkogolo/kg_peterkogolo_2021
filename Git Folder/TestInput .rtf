@@ -1,0 +1,26 @@
+import java.util.Scanner;
+
+public class TestInput extends Isomorphic{
+	
+	public static void main(String[] args)
+    {
+    	
+    	Scanner in = new Scanner (System.in);
+    	
+    	
+    	
+    	System.out.println("Input First String:  ");
+    	String str1 = in.next();
+    	
+    	System.out.println("Input Second String:  ");
+    	String str2 = in.next();
+
+        if (isIsomorphic(str1, str2)) {
+            System.out.print(str1 + " and " + str2 + " are isomorphic");
+        }
+        else {
+            System.out.print(str1 + " and " + str2 + " are not isomorphic");
+        }
+    }
+
+}
