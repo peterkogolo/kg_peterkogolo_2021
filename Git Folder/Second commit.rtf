@@ -1,0 +1,78 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2511
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;\red255\green255\blue255;\red71\green138\blue206;\red203\green203\blue202;
+\red212\green212\blue212;\red79\green122\blue61;\red167\green197\blue151;\red194\green125\blue100;\red202\green202\blue202;
+}
+{\*\expandedcolortbl;;\cssrgb\c100000\c100000\c100000;\cssrgb\c34146\c61677\c84338;\cssrgb\c83320\c83320\c83112;
+\cssrgb\c86465\c86464\c86248;\cssrgb\c37570\c54422\c30364;\cssrgb\c71035\c80830\c65726;\cssrgb\c80772\c56796\c46790;\cssrgb\c83229\c83229\c83125;
+}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 \cb2 \
+\pard\pardeftab720\sl420\partightenfactor0
+
+\f1\fs28 \cf3 \expnd0\expndtw0\kerning0
+import\cf4  java\cf5 .\cf4 util\cf5 .\cf4 HashMap\cf5 ;\cf4 \
+\cf3 import\cf4  java\cf5 .\cf4 util\cf5 .\cf4 HashSet\cf5 ;\cf4 \
+\cf3 import\cf4  java\cf5 .\cf4 util\cf5 .\cf4 Map\cf5 ;\cf4 \
+\cf3 import\cf4  java\cf5 .\cf4 util\cf5 .\cf4 Set\cf5 ;\cf4 \
+\
+\cf3 class\cf4  Isomorphic\
+\cf5 \{\cf4 \
+    \cf3 public\cf4  \cf3 static\cf4  \cf3 boolean\cf4  isIsomorphic\cf5 (\cf4 String str1\cf5 ,\cf4  String str2\cf5 )\
+\
+\cf4 \
+    \cf5 \{\cf4 \
+      \cf6 //Returns false if two strings have different length\cf4 \
+        \cf3 if\cf4  \cf5 (\cf4 str1\cf5 .\cf4 length\cf5 ()\cf4  \cf5 !=\cf4  str2\cf5 .\cf4 length\cf5 ())\cf4  \cf5 \{\cf4 \
+            \cf3 return\cf4  \cf3 false\cf5 ;\cf4 \
+        \cf5 \}\cf4 \
+  \
+    \cf6 // Calls map to store the char of str1 and str2\cf4 \
+        Map\cf5 <\cf4 Character\cf5 ,\cf4  Character\cf5 >\cf4  map \cf5 =\cf4  \cf3 new\cf4  HashMap<>\cf5 ();\cf4 \
+\
+    \cf6 // Use a set to keep track of already mapped characters.\cf4 \
+        Set\cf5 <\cf4 Character\cf5 >\cf4  set \cf5 =\cf4  \cf3 new\cf4  HashSet<>\cf5 ();\cf4 \
+\
+        \cf3 for\cf4  \cf5 (\cf3 int\cf4  i \cf5 =\cf4  \cf7 0\cf5 ;\cf4  i \cf5 <\cf4  str1\cf5 .\cf4 length\cf5 ();\cf4  i\cf5 ++)\cf4 \
+        \cf5 \{\cf4 \
+            \cf3 char\cf4  c1 \cf5 =\cf4  str1\cf5 .\cf4 charAt\cf5 (\cf4 i\cf5 ),\cf4  c2 \cf5 =\cf4  str2\cf5 .\cf4 charAt\cf5 (\cf4 i\cf5 );\cf4 \
+\
+        \cf6 // If c1 has been encountered before:\cf4 \
+            \cf3 if\cf4  \cf5 (\cf4 map\cf5 .\cf4 containsKey\cf5 (\cf4 c1\cf5 ))\cf4 \
+            \cf5 \{\cf4 \
+        \cf6 // Return false if first occurrence of c1 is mapped to\cf4 \
+        \cf6 // a different character.\cf4 \
+                \cf3 if\cf4  \cf5 (\cf4 map\cf5 .\cf4 get\cf5 (\cf4 c1\cf5 )\cf4  \cf5 !=\cf4  c2\cf5 )\cf4 \
+                    \cf3 return\cf4  \cf3 false\cf5 ;\cf4 \
+            \cf5 \}\cf4 \
+        \cf6 // If c1 is encountered for the first time, it has not been mapped yet:\cf4 \
+            \cf3 else\cf4 \
+            \cf5 \{\cf4 \
+            \cf6 // Returns false if c2 is already mapped to some to c1\cf4 \
+                \cf3 if\cf4  \cf5 (\cf4 set\cf5 .\cf4 contains\cf5 (\cf4 c2\cf5 ))\cf4 \
+                    \cf3 return\cf4  \cf3 false\cf5 ;\cf4 \
+\
+            \cf6 // All checks passed. So insert in the map, and the set.\cf4 \
+                map\cf5 .\cf4 put\cf5 (\cf4 c1\cf5 ,\cf4  c2\cf5 );\cf4 \
+                set\cf5 .\cf4 add\cf5 (\cf4 c2\cf5 );\cf4 \
+            \cf5 \}\cf4 \
+        \cf5 \}\cf4 \
+        \cf3 return\cf4  \cf3 true\cf5 ;\cf4 \
+    \cf5 \}\cf4 \
+\
+    \cf3 public\cf4  \cf3 static\cf4  \cf3 void\cf4  main\cf5 (\cf4 String\cf5 []\cf4  args\cf5 )\cf4 \
+    \cf5 \{\cf4 \
+        String str1 \cf5 =\cf4  \cf8 \'93abc\'94\cf5 ;\cf4 \
+        String str2 \cf5 =\cf4  \cf8 \'93bcd\'94\cf5 ;\cf4 \
+\
+        \cf3 if\cf4  \cf5 (\cf4 isIsomorphic\cf5 (\cf4 str1\cf5 ,\cf4  str2\cf5 ))\cf4  \cf5 \{\cf4 \
+            System\cf5 .\cf4 out\cf5 .\cf4 print\cf5 (\cf4 str1 \cf5 +\cf4  \cf8 " and "\cf4  \cf5 +\cf4  str2 \cf5 +\cf4  \cf8 " are isomorphic"\cf5 );\cf4 \
+        \cf5 \}\cf4 \
+        \cf3 else\cf4  \cf5 \{\cf4 \
+            System\cf5 .\cf4 out\cf5 .\cf4 print\cf5 (\cf4 str1 \cf5 +\cf4  \cf8 " and "\cf4  \cf5 +\cf4  str2 \cf5 +\cf4  \cf8 " are not isomorphic"\cf5 );\cf4 \
+        \cf5 \}\cf4 \
+    \cf5 \}\cf4 \
+\cf5 \}\cf9 \
+}
